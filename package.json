@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    ".": "node server.js"
+    ".": "node server.js",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +14,8 @@
   "packageManager": "pnpm@10.31.0",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "wrangler": "^4.71.0"
   }
 }
