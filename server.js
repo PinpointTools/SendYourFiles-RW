@@ -3,7 +3,9 @@ const path = require('path')
 
 const app = express()
 const port = 34537 // which stans for "files" :3
-const os = require('os')
+
+app.use(express.static(path.join(process.cwd(), 'public')));
+app.use(express.static(path.join(process.cwd(), 'src')));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'src', 'index.html'))
