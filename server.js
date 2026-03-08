@@ -11,15 +11,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'src', 'index.html'))
 })
 
-const figlet = `
-  ______   _______
+const figlet = `  ______   _______
  / ___\\ \\ / /  ___|
  \\___ \\\\ V /| |_
   ___) || | |  _|
- |____/ |_| |_|
-`
+ |____/ |_| |_|`
 
 app.listen(port, () => {
   console.log(`${figlet}`)
   console.log(`Server started at http://localhost:${port}`)
+  console.log(`Press CTRL+C to stop.`)
 })
