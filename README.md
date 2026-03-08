@@ -16,4 +16,4 @@ So, Daveberry (and mainly Daveberry made this-) and Runyra made this website for
 We hope you, as the user, enjoy our software and give us a star if you love and keep on using this software.
 It gives us more motivation to keep continuing this project and making this app better.
 
-# CHECK IT OUT AT [HERE](https://example.com/)
+# CHECK IT OUT AT [HERE](https://sendyourfiles.pages.dev/)
