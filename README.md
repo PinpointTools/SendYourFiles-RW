@@ -7,11 +7,11 @@
 </div>
 
 > [!IMPORTANT]
-> WE'VE FULLY SWITCHED OVER TO USING THE WEB! The reason why? We wanted to fix Linux and add Mobile support. We didn't really want to leave these two behind because we love them. Hope that sums it up!
+> This is the rework version! Where everything is in a website now. Why did we make a website version and ditching the old app? Well, Linux webview is fucking **broken** and doesn't work properly. Mobile? Not even a chance with `pywebview`. So, we're all in for a website version. Hope this sums it up!
 
 # Why did we make this?
 We didn't like Discord's 10 mb restriction. We usually have big files, like zips, videos and such.
-So, Daveberry and Runyra made this program for you all to not suffer with the 10mb hell!
+So, Daveberry (and mainly Daveberry made this-) and Runyra made this website for you all to not suffer with the 10mb hell!
 
 We hope you, as the user, enjoy our software and give us a star if you love and keep on using this software.
 It gives us more motivation to keep continuing this project and making this app better.
