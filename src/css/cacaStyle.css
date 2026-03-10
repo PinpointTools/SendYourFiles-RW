@@ -10,7 +10,9 @@
 body {
     background-color: var(--backgroundColor);
     color: var(--textColor);
-    font-family: sans-serif
+    font-family: sans-serif;
+} a {
+    text-decoration: none;
 }
 
 /* ELEMENTS */
@@ -100,26 +102,19 @@ body {
     cursor: text;
 }
 
-select {
-    background-color: var(--frameColor);
-    color: var(--textColor);
-
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    width: 100%;
-    margin-top: 10px;
-
-    outline: none;
-    cursor: pointer;
-
-    font-family: inherit;
+.footer {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 
-option {
-    border-radius: 5px;
-    border: none;
-
-    background-color: var(--frameColor);
-    color: var(--textColor);
+@media screen and (max-width: 768px) {
+    .xyCenter, .footer {
+        width: 90%;
+    }
 }
