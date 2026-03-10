@@ -1,14 +1,6 @@
 let selectedFile = null;
 let selectedSize = 0;
 
-function getSetting(key) {
-  try {
-    return localStorage.getItem(`syf.settings.${key}`);
-  } catch {
-    return null;
-  }
-}
-
 async function loadPopups() {
   const popups = [
     "sendTo.html",

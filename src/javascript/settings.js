@@ -130,3 +130,11 @@ function saveSetting(key, value) {
     console.error("Failed to save setting:", e);
   }
 }
+
+function getSetting(key) {
+  try {
+    return localStorage.getItem(`syf.settings.${key}`);
+  } catch {
+    return null;
+  }
+}
