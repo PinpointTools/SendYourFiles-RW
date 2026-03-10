@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/SendYourFiles.png" width="100" height="100">
+  <img src="src/assets/SendYourFiles.png" width="100" height="100">
   <h1>Send Your Files Project</h1>
   <p>Wanna send your silly files above 10 mb? Here's an app for you! All in your web browser!</p>
   <img src="https://img.shields.io/badge/Made%20with-npm-CB3837?style=flat-square&logo=npm&logoColor=white">
@@ -16,4 +16,4 @@ So, Daveberry (and mainly Daveberry made this-) and Runyra made this website for
 We hope you, as the user, enjoy our software and give us a star if you love and keep on using this software.
 It gives us more motivation to keep continuing this project and making this app better.
 
-# CHECK IT OUT AT [HERE](https://example.com/)
+# CHECK IT OUT AT [HERE](https://sendyourfiles.pages.dev/)
