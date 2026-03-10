@@ -1,10 +1,20 @@
 let selectedFile = null;
 let selectedSize = 0;
 
+function getSetting(key) {
+  try {
+    return localStorage.getItem(`syf.settings.${key}`);
+  } catch {
+    return null;
+  }
+}
+
 async function loadPopups() {
   const popups = [
     "sendTo.html",
     "credits.html",
+    "about.html",
+    "settings.html",
 
     "extra/sendTo-Fallback.html",
     "extra/litterboxTime.html",
@@ -58,7 +68,6 @@ function showPopup(id) {
 
   if (id === "settingsPopup") {
     loadSettings();
-    currentLocalVersion();
   }
 
   const popup = document.getElementById(id);
@@ -179,6 +188,14 @@ async function uploadFileToServer(platform, duration = null) {
       console.error(`Upload failed with status ${response.status}: ${result}`);
     } else {
       await handleUploadSuccess(result);
+      if (typeof result === "string" && result.startsWith("http")) {
+        await notifyDiscordWebhook({
+          platform,
+          url: result,
+          fileName: selectedFile?.name || null,
+          fileSizeBytes: selectedSize || null,
+        });
+      }
     }
   } catch (e) {
     const corsBlocked =

@@ -10,5 +10,8 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
-  ]
+  ],
+  "dev": {
+    "port": 34537 // resembelence as "FILES" :3
+  }
 }

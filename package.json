@@ -1,12 +1,11 @@
 {
-  "name": "SendYourFiles-RW",
+  "name": "sendyourfiles-rw",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    ".": "node server.js",
-    "deploy": "wrangler deploy",
-    "preview": "wrangler dev"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "keywords": [],
   "author": "",

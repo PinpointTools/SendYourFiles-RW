@@ -1,0 +1,10 @@
+{
+  "settings": {
+    "discordWebhook": {
+      "name": "Discord Webhook",
+      "description": "Send notifications to a Discord webhook. Used for history.",
+      "type": "string",
+      "default": ""
+    }
+  }
+}

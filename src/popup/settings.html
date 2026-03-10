@@ -1,0 +1,65 @@
+<div id="settingsPopup" class="popup-overlay" onclick="if(event.target == this) closePopup('settingsPopup')">
+    <div class="popup-content">
+        <span class="headerText">Settings</span> <br/>
+
+        <div class="overflow" style="height: 300px;">
+            <!-- Settings will be loaded here -->
+        </div>
+        <div class="button secondary" onclick="closePopup('settingsPopup')">Close</div>
+    </div>
+</div>
+
+<style>
+    #settingsPopup .item {
+        background-color: var(--elemColor);
+        border-radius: 8px;
+
+        width: auto;
+        height: max-content;
+        padding: 8px;
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 5px;
+    }
+    
+    #settingsPopup .info {
+        text-align: left;
+    }
+    
+    #settingsPopup span {
+        color: var(--textColor);
+    }
+
+    #settingsPopup .item.settings-item {
+        display: block;
+    }
+    
+    #settingsPopup .item.settings-item select {
+        background-color: var(--elemColor);
+        color: var(--textColor);
+        border: 1px solid var(--elemHoverColor);
+        border-radius: 6px;
+        padding: 6px 8px;
+    }
+
+    #settingsPopup .item.settings-item input {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 8px;
+        background-color: var(--elemColor);
+        color: var(--textColor);
+        border: 1px solid var(--elemHoverColor);
+        border-radius: 6px;
+        padding: 8px 10px;
+        outline: none;
+    }
+
+    #settingsPopup .item.settings-item input::placeholder {
+        color: #aaa;
+    }
+</style>
