@@ -27,7 +27,7 @@ If you wanted to make a pull request, here's a step-by-step guide:
   - Alternatively, you can fork the repository on GitHub and clone your fork instead. This is the recommended way to do it.
 - Ensure you have node.js, pnpm and dependencies.
   - Check if you have `pnpm` first by running `pnpm --version`. If you don't have it, install it by doing `npm install -g pnpm`.
-    - Once you've installed `pnpm`, navigate to the project directory (`cd SendYourFiles-RW`) and run `pnpm install` to install all the required dependencies.
+  - Once you've installed `pnpm`, navigate to the project directory (`cd SendYourFiles-RW`) and run `pnpm install` to install all the required dependencies.
 - Run the development server
   - `pnpm .` or `pnpm run .`
   - Change code, add features that you think are cool, fix bugs, whatever you want to do a Pull Request for.
