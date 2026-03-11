@@ -29,7 +29,7 @@ If you wanted to make a pull request, here's a step-by-step guide:
   - Check if you have `pnpm` first by running `pnpm --version`. If you don't have it, install it by doing `npm install -g pnpm`.
   - Once you've installed `pnpm`, navigate to the project directory (`cd SendYourFiles-RW`) and run `pnpm install` to install all the required dependencies.
 - Run the development server
-  - `pnpm .` or `pnpm run .`
+  - `pnpm dev` or `pnpm run dev`
   - Change code, add features that you think are cool, fix bugs, whatever you want to do a Pull Request for.
 - Once finished everything, push your changes by going to the project directory and running:
   - `git add .`

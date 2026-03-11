@@ -1,5 +1,6 @@
 async function loadSettings() {
   const container = document.querySelector("#settingsPopup .overflow");
+  container.innerHTML = `<p style="padding: 10px; color: white;">Loading...</p>`;
   if (!container) return;
 
   container.innerHTML = "";

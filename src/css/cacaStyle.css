@@ -2,7 +2,7 @@
     --backgroundColor: #353535;
     --frameColor: #292929;
     --elemColor: #1e1e1e;
-    --elemHoverColor: #2e2e2e;
+    --elemColor2: #2e2e2e;
 
     --textColor: #ffffff;
 }
@@ -58,7 +58,7 @@ body {
     padding: 10px;
     border-radius: 10px;
 } .button:hover {
-    background-color: var(--elemHoverColor);
+    background-color: var(--elemColor2);
     cursor: pointer;
 }
 
