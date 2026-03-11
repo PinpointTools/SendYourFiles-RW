@@ -48,3 +48,5 @@ async function notifyDiscordWebhook({ platform, url, fileName, fileSizeBytes }) 
         console.error("Discord webhook notification failed:", e);
     }
 }
+
+window.notifyDiscordWebhook = notifyDiscordWebhook;

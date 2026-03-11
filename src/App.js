@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Send Your Files</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+// don't even ask man...
 
-    <link rel="icon" href="/assets/SendYourFiles.ico" type="image/x-icon">
-    <link rel="icon" href="/assets/SendYourFiles.png" type="image/png">
-    <link rel="apple-touch-icon" href="/assets/SendYourFiles.png" type="image/png">
-
-    <link rel="stylesheet" href="/css/cacaStyle.css"/>
-    <link rel="stylesheet" href="/css/popupStyle.css"/>
-</head>
-<!-- moved it to make it more cleaner :3 -->
-<script src="javascript/script.js"></script>
-<script src="javascript/settings.js"></script>
-
-<!-- ALL THE SETGINGSINGISNGISNIN -->
-<script src="javascript/settings/discordWebhook.js"></script>
-
-<body>
-    
+document.querySelector('#app').innerHTML = `
 <section class="xyCenter">
     <div class="frame">
         <div class="textYap">
@@ -47,6 +28,4 @@
     <div class="button" onclick="showPopup('settingsPopup')">Settings</div>
     <a class="button" href="https://github.com/PinpointTools/SendYourFiles-RW">GitHub</a>
 </section>
-
-</body>
-</html>
+`

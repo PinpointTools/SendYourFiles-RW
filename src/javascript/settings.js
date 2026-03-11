@@ -1,14 +1,15 @@
 async function loadSettings() {
   const container = document.querySelector("#settingsPopup .overflow");
-  container.innerHTML = `<p style="padding: 10px; color: white;">Loading...</p>`;
   if (!container) return;
+  container.innerHTML = `<p style="padding: 10px; color: white;">Loading...</p>`;
 
   container.innerHTML = "";
 
   try {
-    const resp = await fetch("/assets/settings.json", { cache: "no-store" });
+    const url = new URL("./src/assets/settings.json", window.location.href);
+    const resp = await fetch(url, { cache: "no-store" });
     if (!resp.ok) {
-      throw new Error(`HTTP ${resp.status} while fetching settings.json`);
+      throw new Error(`HTTP ${resp.status} while fetching ${url.pathname}`);
     }
     const payload = await resp.json();
     // Support either `{ settings: { ... } }` or `{ ... }`.
@@ -139,3 +140,7 @@ function getSetting(key) {
     return null;
   }
 }
+
+window.loadSettings = loadSettings;
+window.saveSetting = saveSetting;
+window.getSetting = getSetting;
