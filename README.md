@@ -43,3 +43,6 @@ If you wanted to make a pull request, here's a step-by-step guide:
 
 > [!IMPORTANT]
 > This is the reworked version! Where everything is in a website now. Why did we make a website version and ditching the old app? Well, Linux webview is fucking **broken** and doesn't work properly. Mobile? Not even a chance with `pywebview`. So, we're all in for a website version. Hope this sums it up!
+
+<!-- CLOUDFLARE TESTING FROM HERE -->
+<!-- 1 -->

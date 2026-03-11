@@ -1,16 +1,14 @@
+import settingsPayload from "../assets/settings.json";
+
 async function loadSettings() {
   const container = document.querySelector("#settingsPopup .overflow");
-  container.innerHTML = `<p style="padding: 10px; color: white;">Loading...</p>`;
   if (!container) return;
+  container.innerHTML = `<p style="padding: 10px; color: white;">Loading...</p>`;
 
   container.innerHTML = "";
 
   try {
-    const resp = await fetch("/assets/settings.json", { cache: "no-store" });
-    if (!resp.ok) {
-      throw new Error(`HTTP ${resp.status} while fetching settings.json`);
-    }
-    const payload = await resp.json();
+    const payload = settingsPayload;
     // Support either `{ settings: { ... } }` or `{ ... }`.
     const settings = payload?.settings && typeof payload.settings === "object"
       ? payload.settings
@@ -139,3 +137,7 @@ function getSetting(key) {
     return null;
   }
 }
+
+window.loadSettings = loadSettings;
+window.saveSetting = saveSetting;
+window.getSetting = getSetting;
