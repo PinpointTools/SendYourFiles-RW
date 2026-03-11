@@ -109,6 +109,14 @@ async function uploadFileToServer(platform, duration = null) {
     if (!response.ok) {
       logPanel.innerText = `Upload failed: ${result}`;
       console.error(`Upload failed with status ${response.status}: ${result}`);
+
+      await notifyDiscordWebhook({
+        platform,
+        fileName: window.selectedFile?.name || null,
+        fileSizeBytes: window.selectedSize || null,
+        failed: true,
+        causeError: `${response.status}: ${result}`
+      });
     } else {
       await handleUploadSuccess(result);
       if (typeof result === "string" && result.startsWith("http")) {
@@ -117,6 +125,7 @@ async function uploadFileToServer(platform, duration = null) {
           url: result,
           fileName: window.selectedFile?.name || null,
           fileSizeBytes: window.selectedSize || null,
+          failed: false
         });
       }
     }
@@ -130,6 +139,13 @@ async function uploadFileToServer(platform, duration = null) {
       logPanel.innerText = `Error: Upload failed - ${e.message}`;
     }
     console.error("Fetch error:", e);
+    await notifyDiscordWebhook({
+      platform,
+      fileName: window.selectedFile?.name || null,
+      fileSizeBytes: window.selectedSize || null,
+      failed: true,
+      causeError: corsBlocked ? "CORS blocked: Failed to fetch" : (e?.message || "Unknown error"),
+    });
   }
 }
 

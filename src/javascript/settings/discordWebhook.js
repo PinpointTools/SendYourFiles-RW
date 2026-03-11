@@ -15,7 +15,7 @@ function isDiscordWebhookUrl(url) {
     }
 }
 
-async function notifyDiscordWebhook({ platform, url, fileName, fileSizeBytes }) {
+async function notifyDiscordWebhook({ platform, url, fileName, fileSizeBytes, failed, causeError }) {
     const webhookUrl = (getSetting("discordWebhook") || "").trim();
     if (!webhookUrl) return;
 
@@ -27,23 +27,38 @@ async function notifyDiscordWebhook({ platform, url, fileName, fileSizeBytes }) 
     }
 
     const sizeMB = fileSizeBytes ? (fileSizeBytes / (1024 * 1024)).toFixed(2) : "";
-    const embedColor = 0x008BFF;
-    const description = [
-        `Provider: **${platform}**`,
-        fileName ? `File: \`${fileName}\`${sizeMB ? ` (${sizeMB} MB)` : ""}` : null,
-        url ? `Link: ${url}` : null,
-    ].filter(Boolean).join("\n");
+    let title = "";
+    let description = "";
+    let embedColor = 0x008BFF;
+
+    if (!failed) {
+        title = "New Upload";
+        description = [
+            `Provider: **${platform}**`,
+            fileName ? `File: \`${fileName}\`${sizeMB ? ` (${sizeMB} MB)` : ""}` : null,
+            url ? `Link: ${url}` : null,
+        ].filter(Boolean).join("\n");
+    } else {
+        title = "Upload Failed";
+        description = [
+            `Provider: **${platform}**`,
+            fileName ? `File: \`${fileName}\`${sizeMB ? ` (${sizeMB} MB)` : ""}` : null,
+            causeError ? `Cause of error: \`${causeError}\`` : null,
+        ].filter(Boolean).join("\n");
+        embedColor = 0xFF0000;
+    }
 
     try {
         const formData = new FormData();
         formData.append("payload_json", JSON.stringify({
             embeds: [{
-                title: "New upload",
+                title: title,
                 description,
                 color: embedColor,
             }],
         }));
         await fetch(webhookUrl, { method: "POST", body: formData, mode: "no-cors" });
+        console.log("Discord webhook notification sent!")
     } catch (e) {
         console.error("Discord webhook notification failed:", e);
     }
