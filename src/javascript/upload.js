@@ -165,12 +165,11 @@ async function triggerUpload(platform) {
     return;
   }
 
-  // TODO: check if buzzheavier works with just cloudflare pages.
-  // if (platform == "buzzheavier") {
-  //   window.closePopup("platformPopup");
-  //   window.showPopup("buzzheavierCORS")
-  //   return
-  // }
+  if (platform == "buzzheavier") {
+    window.closePopup("platformPopup");
+    window.showPopup("buzzheavierCORS")
+    return
+  }
 
   window.closePopup("platformPopup");
   await uploadFileToServer(platform, null);
