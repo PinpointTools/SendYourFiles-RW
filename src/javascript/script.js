@@ -19,14 +19,18 @@ async function loadPopups() {
     "extra/warning/buzzheavier-cors.html",
   ];
 
+  const popupModules = import.meta.glob("../popup/**/*.html", {
+    as: "raw",
+    eager: true,
+  });
+
   for (const file of popups) {
     try {
-      const url = new URL(`./src/popup/${file}`, window.location.href);
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status} while fetching ${url.pathname}`);
+      const moduleKey = `../popup/${file}`;
+      const html = popupModules[moduleKey];
+      if (!html) {
+        throw new Error(`Missing popup HTML module for ${moduleKey}`);
       }
-      const html = await response.text();
       document.body.insertAdjacentHTML("beforeend", html);
       console.log(`Loaded popup: ${file}`);
     } catch (e) {

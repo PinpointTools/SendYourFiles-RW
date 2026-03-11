@@ -1,3 +1,5 @@
+import settingsPayload from "../assets/settings.json";
+
 async function loadSettings() {
   const container = document.querySelector("#settingsPopup .overflow");
   if (!container) return;
@@ -6,12 +8,7 @@ async function loadSettings() {
   container.innerHTML = "";
 
   try {
-    const url = new URL("./src/assets/settings.json", window.location.href);
-    const resp = await fetch(url, { cache: "no-store" });
-    if (!resp.ok) {
-      throw new Error(`HTTP ${resp.status} while fetching ${url.pathname}`);
-    }
-    const payload = await resp.json();
+    const payload = settingsPayload;
     // Support either `{ settings: { ... } }` or `{ ... }`.
     const settings = payload?.settings && typeof payload.settings === "object"
       ? payload.settings
