@@ -7,17 +7,24 @@ export default defineConfig({
     cloudflare(),
     VitePWA({
       registerType: "autoUpdate",
+      injectRegister: "auto",
       manifest: {
         name: "Send Your Files",
         short_name: "SendYourFiles",
         start_url: "/",
+        scope: "/",
         display: "standalone",
         background_color: "#ffffff",
         theme_color: "#0b1f2a",
         icons: [
           {
-            src: "./src/assets/SendYourFiles.png",
-            sizes: "256x256",
+            src: "/icons/192/syf.png",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "/icons/512/syf.png",
+            sizes: "512x512",
             type: "image/png"
           }
         ]

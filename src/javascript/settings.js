@@ -1,4 +1,4 @@
-import settingsPayload from "../assets/settings.json";
+import settingsPayload from "../../public/settings.json";
 
 async function loadSettings() {
   const container = document.querySelector("#settingsPopup .overflow");
