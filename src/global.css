@@ -1,0 +1,38 @@
+html, body, #app {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    font-family: sans-serif;
+    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0);
+}
+
+.button {
+    background-color: rgba(255, 255, 255, 0.3);
+    /*border: none;*/
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    scale: 1;
+    transition: all 0.1s ease-out;
+    text-decoration: none;
+    text-align: center;
+    user-select: none;
+    -webkit-user-drag: none;
+    
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        scale: 1.05;
+    }
+}
+
+.bigtext {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+a { color: aqua; }
+*:focus { outline: none; }

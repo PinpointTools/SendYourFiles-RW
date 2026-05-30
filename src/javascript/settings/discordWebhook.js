@@ -16,7 +16,7 @@ function isDiscordWebhookUrl(url) {
 }
 
 async function notifyDiscordWebhook({ platform, url, fileName, fileSizeBytes, failed, causeError }) {
-    const webhookUrl = (getSetting("discordWebhook") || "").trim();
+    const webhookUrl = (window.getSetting("discordWebhook") || "").trim();
     if (!webhookUrl) return;
 
     if (!isDiscordWebhookUrl(webhookUrl)) {

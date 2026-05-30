@@ -1,8 +1,3 @@
-function startLitterboxFlow() {
-  window.closePopup("platformPopup");
-  window.showPopup("litterboxTimePopup");
-}
-
 function copyToClipboard(text) {
   const textArea = document.createElement("textarea");
   textArea.value = text;
@@ -58,11 +53,7 @@ async function uploadFileToServer(platform, duration = null) {
     if (platform === "catbox") {
       const formData = new FormData();
       formData.append("reqtype", "fileupload");
-      formData.append(
-        "fileToUpload",
-        window.selectedFile,
-        window.selectedFile.name,
-      );
+      formData.append("fileToUpload", window.selectedFile, window.selectedFile.name);
       response = await fetch("https://catbox.moe/user/api.php", {
         method: "POST",
         body: formData,
@@ -72,11 +63,7 @@ async function uploadFileToServer(platform, duration = null) {
       const formData = new FormData();
       formData.append("reqtype", "fileupload");
       formData.append("time", duration || "1h");
-      formData.append(
-        "fileToUpload",
-        window.selectedFile,
-        window.selectedFile.name,
-      );
+      formData.append("fileToUpload", window.selectedFile, window.selectedFile.name);
       response = await fetch(
         "https://litterbox.catbox.moe/resources/internals/api.php",
         {
@@ -85,22 +72,6 @@ async function uploadFileToServer(platform, duration = null) {
         },
       );
       result = (await response.text()).trim();
-    } else if (platform === "buzzheavier") {
-      const uploadURL = `https://w.buzzheavier.com/${encodeURIComponent(window.selectedFile.name)}`;
-      response = await fetch(uploadURL, {
-        method: "PUT",
-        body: window.selectedFile,
-      });
-
-      if (response.ok) {
-        const body = await response.json();
-        const fileID = body?.data?.id;
-        result = fileID
-          ? `https://buzzheavier.com/${fileID}`
-          : "Error: Could not find file ID in response.";
-      } else {
-        result = await response.text();
-      }
     } else {
       logPanel.innerText = `Unsupported provider: ${platform}`;
       return;
@@ -110,7 +81,7 @@ async function uploadFileToServer(platform, duration = null) {
       logPanel.innerText = `Upload failed: ${result}`;
       console.error(`Upload failed with status ${response.status}: ${result}`);
 
-      await notifyDiscordWebhook({
+      await window.notifyDiscordWebhook({
         platform,
         fileName: window.selectedFile?.name || null,
         fileSizeBytes: window.selectedSize || null,
@@ -120,7 +91,7 @@ async function uploadFileToServer(platform, duration = null) {
     } else {
       await handleUploadSuccess(result);
       if (typeof result === "string" && result.startsWith("http")) {
-        await notifyDiscordWebhook({
+        await window.notifyDiscordWebhook({
           platform,
           url: result,
           fileName: window.selectedFile?.name || null,
@@ -139,7 +110,7 @@ async function uploadFileToServer(platform, duration = null) {
       logPanel.innerText = `Error: Upload failed - ${e.message}`;
     }
     console.error("Fetch error:", e);
-    await notifyDiscordWebhook({
+    await window.notifyDiscordWebhook({
       platform,
       fileName: window.selectedFile?.name || null,
       fileSizeBytes: window.selectedSize || null,
@@ -177,14 +148,9 @@ async function triggerUpload(platform) {
   }
 
   if (platform === "litterbox") {
-    startLitterboxFlow();
-    return;
-  }
-
-  if (platform == "buzzheavier") {
     window.closePopup("platformPopup");
-    window.showPopup("buzzheavierCORS")
-    return
+    window.showPopup("litterboxTimePopup");
+    return;
   }
 
   window.closePopup("platformPopup");
