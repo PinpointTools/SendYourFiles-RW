@@ -11,27 +11,18 @@ import Credits from './components/popups/extras/Credits.vue';
 import About from './components/popups/extras/About.vue';
 import LitterboxExpireTime from './components/popups/providers/LitterboxExpireTime.vue';
 import FileTooBig from './components/popups/providers/FileTooBig.vue';
+
+// settings logic
 import './javascript/upload.js'
 import './javascript/settings/discordWebhook.js'
 
-window.saveSetting = (key, value) => {
-  try {
-    localStorage.setItem(`syf.settings.${key}`, String(value))
-  } catch (e) {
-    console.error("Failed to save setting:", e)
-  }
-}
+window.saveSetting = (key, value) => { try { localStorage.setItem(`syf.settings.${key}`, String(value)) } catch (e) { console.error("Failed to save setting:", e) } }
+window.getSetting = (key) => { try { return localStorage.getItem(`syf.settings.${key}`) } catch { return null } }
 
-window.getSetting = (key) => {
-  try {
-    return localStorage.getItem(`syf.settings.${key}`)
-  } catch {
-    return null
-  }
-}
-
+// misc
 const title = "Send Your Files".split("")
 
+// show/toggle popups
 const showUploadTo = ref(false)
 const showSettings = ref(false)
 const showAbout = ref(false)
