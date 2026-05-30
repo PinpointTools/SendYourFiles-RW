@@ -18,6 +18,8 @@ html, body, #app {
     transition: all 0.1s ease-out;
     text-decoration: none;
     text-align: center;
+    user-select: none;
+    -webkit-user-drag: none;
     
     &:hover {
         background-color: rgba(255, 255, 255, 0.5);
@@ -31,6 +33,5 @@ html, body, #app {
     font-weight: bold;
 }
 
-a {
-    color: aqua;
-}
+a { color: aqua; }
+*:focus { outline: none; }

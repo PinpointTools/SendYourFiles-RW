@@ -10,6 +10,7 @@ import Settings from './components/popups/extras/Settings.vue';
 import Credits from './components/popups/extras/Credits.vue';
 import About from './components/popups/extras/About.vue';
 import LitterboxExpireTime from './components/popups/providers/LitterboxExpireTime.vue';
+import FileTooBig from './components/popups/providers/FileTooBig.vue';
 
 const title = "Send Your Files".split("")
 
@@ -18,12 +19,23 @@ const showSettings = ref(false)
 const showAbout = ref(false)
 const showCredits = ref(false)
 const showLitterboxExpireTime = ref(false)
+const showFileTooBig = ref(false)
+const fileTooBigProvider = ref('')
+const fileTooBigSize = ref('')
+const fileTooBigProviderSize = ref('')
 
 function toggleUploadTo() { showUploadTo.value = !showUploadTo.value }
 function toggleSettings() { showSettings.value = !showSettings.value }
 function toggleAbout() { showAbout.value = !showAbout.value }
 function toggleCredits() { showCredits.value = !showCredits.value }
 function toggleLitterboxExpireTime() { showLitterboxExpireTime.value = !showLitterboxExpireTime.value }
+function toggleFileTooBig() { showFileTooBig.value = !showFileTooBig.value }
+function openFileTooBig(provider, size) {
+  fileTooBigProvider.value = provider
+  fileTooBigSize.value = size
+  fileTooBigProviderSize.value = provider == 'Catbox' ? '200 MB' : 'Litterbox' ? '1000 MB' : 'Unknown'
+  showFileTooBig.value = true
+}
 
 provide('toggleUploadTo', toggleUploadTo)
 provide('showUploadTo', showUploadTo)
@@ -35,6 +47,9 @@ provide('toggleCredits', toggleCredits)
 provide('showCredits', showCredits)
 provide('toggleLitterboxExpireTime', toggleLitterboxExpireTime)
 provide('showLitterboxExpireTime', showLitterboxExpireTime)
+provide('openFileTooBig', openFileTooBig)
+provide('toggleFileTooBig', toggleFileTooBig)
+provide('showFileTooBig', showFileTooBig)
 </script>
 
 <template>
@@ -61,6 +76,7 @@ provide('showLitterboxExpireTime', showLitterboxExpireTime)
         <Credits />
         <About />
         <LitterboxExpireTime />
+        <FileTooBig :provider="fileTooBigProvider" :size="fileTooBigSize" :providerSize="fileTooBigProviderSize"/>
         <!-- POPUPS ENDS HERE -->
         
         <div class="bottomPage">
