@@ -16,6 +16,8 @@ html, body, #app {
     font-size: 16px;
     scale: 1;
     transition: all 0.1s ease-out;
+    text-decoration: none;
+    text-align: center;
     
     &:hover {
         background-color: rgba(255, 255, 255, 0.5);

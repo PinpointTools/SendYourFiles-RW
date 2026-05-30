@@ -33,8 +33,12 @@
             </div>
             <UploadSection />
         </div>
+        <UploadTo />
+    
+        <div class="bottomPage">
+            <ExtraButtons />
+        </div>
     </WavyBackground>
-    <UploadTo />
 </template>
 
 <style>
@@ -68,6 +72,15 @@
                 max-width: 20rem;
             }
         }
+    }
+
+    .bottomPage {
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
     }
 
     @keyframes float {
