@@ -56,7 +56,7 @@
             
             .heading {
                 display: flex;
-                gap: 5px;
+                gap: 2px;
                 font-size: 2rem;
                 font-weight: bold;
 
