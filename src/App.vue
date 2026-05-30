@@ -1,0 +1,70 @@
+<script setup>
+    import { ref, provide } from 'vue'
+    import WavyBackground from './components/main/WavyBackground.vue';
+    import UploadSection from './components/main/UploadSection.vue';
+    import UploadTo from './components/popups/main/UploadTo.vue';
+    import ExtraButtons from './components/main/ExtraButtons.vue';
+    
+    const showPopup = ref(false)
+    
+    function togglePopup() {
+        showPopup.value = !showPopup.value
+    }
+    
+    provide('togglePopup', togglePopup)
+    provide('showPopup', showPopup)
+</script>
+
+<template>
+    <WavyBackground>
+        <div class="content">
+            <div class="hero">
+                <section class="heading">
+                    <span class="1">Send</span>
+                    <span class="2">Your</span>
+                    <span class="3">Files</span>
+                </section>
+                <span class="desc">Ever wanted to share your silly files to another platform? Then, this is the place for you!</span>
+            </div>
+            <UploadSection />
+        </div>
+    </WavyBackground>
+    <UploadTo />
+</template>
+
+<style>
+    .content {
+        color: white;
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            font-size: 1.25rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+            
+            .heading {
+                display: flex;
+                gap: 5px;
+                font-size: 2rem;
+                font-weight: bold;
+
+                [class="1"] { animation: float 2s ease-in-out infinite; }
+                [class="2"] { animation: float 2s ease-in-out 0.3s infinite; }
+                [class="3"] { animation: float 2s ease-in-out 0.6s infinite; }
+            }
+
+            .desc {
+                min-width: 20rem;
+                max-width: 20rem;
+            }
+        }
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+</style>
