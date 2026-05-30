@@ -12,6 +12,23 @@ import About from './components/popups/extras/About.vue';
 import LitterboxExpireTime from './components/popups/providers/LitterboxExpireTime.vue';
 import FileTooBig from './components/popups/providers/FileTooBig.vue';
 import './javascript/upload.js'
+import './javascript/settings/discordWebhook.js'
+
+window.saveSetting = (key, value) => {
+  try {
+    localStorage.setItem(`syf.settings.${key}`, String(value))
+  } catch (e) {
+    console.error("Failed to save setting:", e)
+  }
+}
+
+window.getSetting = (key) => {
+  try {
+    return localStorage.getItem(`syf.settings.${key}`)
+  } catch {
+    return null
+  }
+}
 
 const title = "Send Your Files".split("")
 
@@ -65,7 +82,7 @@ window.showPopup = (name) => {
     case 'litterboxLimiterPopup':
       fileTooBigProvider.value = 'Litterbox'
       fileTooBigSize.value = (globalThis.sizeMB?.value || '?') + ' MB'
-      fileTooBigProviderSize.value = '1 GB'
+      fileTooBigProviderSize.value = '1 GB (aka; 1024 MB)'
       showFileTooBig.value = true
       break
   }

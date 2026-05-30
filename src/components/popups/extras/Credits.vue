@@ -98,7 +98,7 @@ const credits = [
                     }
 
                     &:hover {
-                        scale: 1.05;
+                        scale: 1.025;
                     }
                 }
             }

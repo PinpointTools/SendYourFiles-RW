@@ -66,7 +66,6 @@ function copyLogs() {
                 border-radius: 0.75rem;
                 width: 500px; @media screen and (max-width: 768px) { width: 250px; }
                 overflow: auto;
-                scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0);
                 cursor: pointer;
                 user-select: all;
             }
