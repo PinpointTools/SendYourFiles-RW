@@ -1,19 +1,40 @@
 <script setup>
-    import { ref, provide } from 'vue'
-    import WavyBackground from './components/main/WavyBackground.vue';
-    import UploadSection from './components/main/UploadSection.vue';
-    import UploadTo from './components/popups/main/UploadTo.vue';
-    import ExtraButtons from './components/main/ExtraButtons.vue';
-    
-    const showPopup = ref(false)
-    const title = "Send Your Files".split("")
-    
-    function togglePopup() {
-        showPopup.value = !showPopup.value
-    }
-    
-    provide('togglePopup', togglePopup)
-    provide('showPopup', showPopup)
+import { ref, provide } from 'vue'
+import WavyBackground from './components/main/WavyBackground.vue';
+import UploadSection from './components/main/UploadSection.vue';
+import ExtraButtons from './components/main/ExtraButtons.vue';
+
+// all the popups
+import UploadTo from './components/popups/main/UploadTo.vue';
+import Settings from './components/popups/extras/Settings.vue';
+import Credits from './components/popups/extras/Credits.vue';
+import About from './components/popups/extras/About.vue';
+import LitterboxExpireTime from './components/popups/providers/LitterboxExpireTime.vue';
+
+const title = "Send Your Files".split("")
+
+const showUploadTo = ref(false)
+const showSettings = ref(false)
+const showAbout = ref(false)
+const showCredits = ref(false)
+const showLitterboxExpireTime = ref(false)
+
+function toggleUploadTo() { showUploadTo.value = !showUploadTo.value }
+function toggleSettings() { showSettings.value = !showSettings.value }
+function toggleAbout() { showAbout.value = !showAbout.value }
+function toggleCredits() { showCredits.value = !showCredits.value }
+function toggleLitterboxExpireTime() { showLitterboxExpireTime.value = !showLitterboxExpireTime.value }
+
+provide('toggleUploadTo', toggleUploadTo)
+provide('showUploadTo', showUploadTo)
+provide('toggleSettings', toggleSettings)
+provide('showSettings', showSettings)
+provide('toggleAbout', toggleAbout)
+provide('showAbout', showAbout)
+provide('toggleCredits', toggleCredits)
+provide('showCredits', showCredits)
+provide('toggleLitterboxExpireTime', toggleLitterboxExpireTime)
+provide('showLitterboxExpireTime', showLitterboxExpireTime)
 </script>
 
 <template>
@@ -33,8 +54,15 @@
             </div>
             <UploadSection />
         </div>
+
+        <!-- POPUPS STARTS HERE -->
         <UploadTo />
-    
+        <Settings />
+        <Credits />
+        <About />
+        <LitterboxExpireTime />
+        <!-- POPUPS ENDS HERE -->
+        
         <div class="bottomPage">
             <ExtraButtons />
         </div>

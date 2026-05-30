@@ -11,7 +11,7 @@ function close() {
     <div class="popupOverlay" :class="{ visible: showPopup }" @click.self="close">
         <div class="popup">
             <button class="closeButton" @click="close">×</button>
-            <slot name="popup" />
+            <div class="mainContentPopup"><slot name="popup" /></div>
         </div>
     </div>
 </template>
@@ -47,10 +47,21 @@ function close() {
         padding: 2rem;
         border-radius: 1rem;
         min-width: 300px;
+        max-width: 500px;
         position: relative;
         transform: scale(0.5);
         opacity: 0;
         transition: transform 0.25s ease, opacity 0.25s ease;
+
+        @media screen and (max-width: 768px) {
+            min-width: 100px;
+            margin: 0 1rem;
+        }
+        
+        .mainContentPopup {
+            max-height: 500px;
+            overflow: auto;
+        }
 
         .closeButton {
             position: absolute;

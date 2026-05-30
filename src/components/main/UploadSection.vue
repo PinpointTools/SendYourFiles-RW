@@ -3,7 +3,7 @@ import { ref, inject } from 'vue'
 
 const logs = ref("No logs yet...")
 const fileInput = ref(null)
-const togglePopup = inject('togglePopup')
+const toggleUploadTo = inject('toggleUploadTo')
 
 function openFileDialog() {
     fileInput.value?.click()
@@ -29,7 +29,7 @@ function onFileSelected() {
         <div class="bottom">
             <input ref="fileInput" type="file" @change="onFileSelected" hidden>
             <button class="button" @click="openFileDialog()">Choose file</button>
-            <button class="button" @click="togglePopup()">Upload to...</button>
+            <button class="button" @click="toggleUploadTo">Upload to...</button>
         </div>
     </div>
 </template>

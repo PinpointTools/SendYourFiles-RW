@@ -1,14 +1,16 @@
 <script setup>
-  function placeholder() {
-    alert("Placeholder... I guess?");
-  }
+import { inject } from 'vue'
+
+const toggleSettings = inject('toggleSettings')
+const toggleCredits = inject('toggleCredits')
+const toggleAbout = inject('toggleAbout')
 </script>
 
 <template>
     <div class="mainExtras">
-        <button @click="placeholder()" class="button a1"> Credits </button>
-        <button @click="placeholder()" class="button a2"> About </button>
-        <button @click="placeholder()" class="button a3"> Settings </button>
+        <button @click="toggleCredits()" class="button a1"> Credits </button>
+        <button @click="toggleAbout()" class="button a2"> About </button>
+        <button @click="toggleSettings()" class="button a3"> Settings </button>
         <a href="https://github.com/PinpointTools/SendYourFiles-RW" class="button a4"> Github </a>
     </div>
 </template>
