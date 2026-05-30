@@ -56,9 +56,9 @@
             
             .heading {
                 display: flex;
-                gap: 2px;
                 font-size: 2rem;
                 font-weight: bold;
+                letter-spacing: 0.5px;
 
                 span {
                     display: inline-block;
