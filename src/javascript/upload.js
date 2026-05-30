@@ -85,22 +85,6 @@ async function uploadFileToServer(platform, duration = null) {
         },
       );
       result = (await response.text()).trim();
-    } else if (platform === "buzzheavier") {
-      const uploadURL = `https://w.buzzheavier.com/${encodeURIComponent(window.selectedFile.name)}`;
-      response = await fetch(uploadURL, {
-        method: "PUT",
-        body: window.selectedFile,
-      });
-
-      if (response.ok) {
-        const body = await response.json();
-        const fileID = body?.data?.id;
-        result = fileID
-          ? `https://buzzheavier.com/${fileID}`
-          : "Error: Could not find file ID in response.";
-      } else {
-        result = await response.text();
-      }
     } else {
       logPanel.innerText = `Unsupported provider: ${platform}`;
       return;
@@ -179,12 +163,6 @@ async function triggerUpload(platform) {
   if (platform === "litterbox") {
     startLitterboxFlow();
     return;
-  }
-
-  if (platform == "buzzheavier") {
-    window.closePopup("platformPopup");
-    window.showPopup("buzzheavierCORS")
-    return
   }
 
   window.closePopup("platformPopup");

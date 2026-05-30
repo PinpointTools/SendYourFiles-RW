@@ -11,6 +11,7 @@ import Credits from './components/popups/extras/Credits.vue';
 import About from './components/popups/extras/About.vue';
 import LitterboxExpireTime from './components/popups/providers/LitterboxExpireTime.vue';
 import FileTooBig from './components/popups/providers/FileTooBig.vue';
+import './javascript/upload.js'
 
 const title = "Send Your Files".split("")
 
@@ -50,6 +51,34 @@ provide('showLitterboxExpireTime', showLitterboxExpireTime)
 provide('openFileTooBig', openFileTooBig)
 provide('toggleFileTooBig', toggleFileTooBig)
 provide('showFileTooBig', showFileTooBig)
+
+window.showPopup = (name) => {
+  switch (name) {
+    case 'platformPopup': showUploadTo.value = true; break
+    case 'litterboxTimePopup': showLitterboxExpireTime.value = true; break
+    case 'catboxLimiterPopup':
+      fileTooBigProvider.value = 'Catbox'
+      fileTooBigSize.value = (globalThis.sizeMB?.value || '?') + ' MB'
+      fileTooBigProviderSize.value = '200 MB'
+      showFileTooBig.value = true
+      break
+    case 'litterboxLimiterPopup':
+      fileTooBigProvider.value = 'Litterbox'
+      fileTooBigSize.value = (globalThis.sizeMB?.value || '?') + ' MB'
+      fileTooBigProviderSize.value = '1 GB'
+      showFileTooBig.value = true
+      break
+  }
+}
+
+window.closePopup = (name) => {
+  switch (name) {
+    case 'platformPopup': showUploadTo.value = false; break
+    case 'litterboxTimePopup': showLitterboxExpireTime.value = false; break
+    case 'catboxLimiterPopup':
+    case 'litterboxLimiterPopup': showFileTooBig.value = false; break
+  }
+}
 </script>
 
 <template>

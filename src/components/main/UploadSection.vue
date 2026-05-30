@@ -17,6 +17,9 @@ function onFileSelected() {
     sizeMB.value = (file.size / (1024 * 1024)).toFixed(2)
     logs.value = `Selected: ${file.name} (${sizeMB.value} MB)`
 
+    window.selectedFile = file
+    window.selectedSize = file.size
+
     fileInput.value.value = ''
 }
 
@@ -36,7 +39,7 @@ function copyLogs() {
 <template>
     <div>
         <div class="top">
-            <pre class="logs" @click="copyLogs()">{{ logs }}</pre>
+            <pre class="logs" id="logs" @click="copyLogs()">{{ logs }}</pre>
         </div>
 
         <div class="bottom">
