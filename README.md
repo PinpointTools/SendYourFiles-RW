@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="src/assets/SendYourFiles.png" width="100" height="100">
+  <img src="public/icons/192/syf.png" width="100" height="100">
   <h1>Send Your Files Project</h1>
   <p>Wanna send your silly files above 10 mb? Here's an app for you! All in your web browser!</p>
   <img src="https://img.shields.io/badge/Made%20with-pnpm-F69220?style=flat-square&logo=pnpm&logoColor=white">
