@@ -6,6 +6,7 @@
     import ExtraButtons from './components/main/ExtraButtons.vue';
     
     const showPopup = ref(false)
+    const title = "Send Your Files".split("")
     
     function togglePopup() {
         showPopup.value = !showPopup.value
@@ -20,9 +21,13 @@
         <div class="content">
             <div class="hero">
                 <section class="heading">
-                    <span class="1">Send</span>
-                    <span class="2">Your</span>
-                    <span class="3">Files</span>
+                    <span
+                        v-for="(letter, i) in title"
+                        :key="i"
+                        :style="{ '--delay': `${i * 0.1}s` }"
+                    >
+                        {{ letter === ' ' ? '\u00A0' : letter }}
+                    </span>
                 </section>
                 <span class="desc">Ever wanted to share your silly files to another platform? Then, this is the place for you!</span>
             </div>
@@ -51,9 +56,11 @@
                 font-size: 2rem;
                 font-weight: bold;
 
-                [class="1"] { animation: float 2s ease-in-out infinite; }
-                [class="2"] { animation: float 2s ease-in-out 0.3s infinite; }
-                [class="3"] { animation: float 2s ease-in-out 0.6s infinite; }
+                span {
+                    display: inline-block;
+                    animation: float 2s ease-in-out infinite;
+                    animation-delay: var(--delay);
+                }
             }
 
             .desc {
